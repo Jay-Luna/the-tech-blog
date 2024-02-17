@@ -27,4 +27,17 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Add a new post
+router.post('/comments', async (req, res) => {
+    try {
+        var newComment = req.body;
+        newComment.created_date = new Date();
+
+        const commentData = await Comment.create(newComment);
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(400).json(err.message);
+    }
+});
+
 module.exports = router;
