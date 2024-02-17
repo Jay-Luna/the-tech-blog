@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 
-// Post APIs /posts
+// Post APIs /api/posts
 // Get all posts & their comments
 router.get('/', async (req, res) => {
     try {

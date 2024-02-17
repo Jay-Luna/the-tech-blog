@@ -11,7 +11,7 @@ CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30),
   email VARCHAR(30),
-  password VARCHAR(30)
+  password varchar(60)
 );
 
 -- POST TABLE ----
