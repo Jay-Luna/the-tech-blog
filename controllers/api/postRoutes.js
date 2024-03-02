@@ -5,6 +5,7 @@ const { Post, Comment } = require('../../models');
 // Get all posts & their comments
 router.get('/', async (req, res) => {
     try {
+        // find all post including its comments
         const postData = await Post.findAll({
             include: [{ model: Comment }]
         });
@@ -18,25 +19,27 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         var newPost = req.body;
+        // add created time of the post
         newPost.created_date = new Date();
 
         const postData = await Post.create(newPost);
         res.status(200).json(postData);
     } catch (err) {
-        res.status(400).json(err.message);
+        res.status(500).json(err.message);
     }
 });
 
-// Add a new post
+// Add a new comment
 router.post('/comments', async (req, res) => {
     try {
         var newComment = req.body;
+        // add created time of the comment
         newComment.created_date = new Date();
 
         const commentData = await Comment.create(newComment);
         res.status(200).json(commentData);
     } catch (err) {
-        res.status(400).json(err.message);
+        res.status(500).json(err.message);
     }
 });
 

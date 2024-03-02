@@ -4,6 +4,7 @@ require('dotenv').config();
 
 let sequelize;
 
+//Leverage Sequelize to connect to mySQL db
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
